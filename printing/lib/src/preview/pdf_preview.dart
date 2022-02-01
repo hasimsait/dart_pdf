@@ -381,8 +381,8 @@ class _PdfPreviewState extends State<PdfPreview> with PdfPreviewRaster {
 
     if (widget.allowPrinting && info?.canPrint == true) {
       actions.add(
-        IconButton(
-          icon: widget.printIcon ?? const Icon(Icons.print),
+        ElevatedButton(
+          child: widget.printIcon ?? const Icon(Icons.print),
           onPressed: _print,
         ),
       );
@@ -390,9 +390,9 @@ class _PdfPreviewState extends State<PdfPreview> with PdfPreviewRaster {
 
     if (widget.allowSharing && info?.canShare == true) {
       actions.add(
-        IconButton(
+        ElevatedButton(
           key: shareWidget,
-          icon: widget.shareIcon ?? const Icon(Icons.share),
+          child: widget.shareIcon ?? const Icon(Icons.share),
           onPressed: _share,
         ),
       );
@@ -461,8 +461,8 @@ class _PdfPreviewState extends State<PdfPreview> with PdfPreviewRaster {
     if (widget.actions != null) {
       for (final action in widget.actions!) {
         actions.add(
-          IconButton(
-            icon: action.icon,
+          ElevatedButton(
+            child: action.icon,
             onPressed: action.onPressed == null
                 ? null
                 : () => action.onPressed!(
