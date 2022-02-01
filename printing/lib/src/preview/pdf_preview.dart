@@ -44,8 +44,10 @@ class PdfPreview extends StatefulWidget {
     this.actions,
     this.pageFormats = _defaultPageFormats,
     this.onError,
+    this.printIcon,
     this.onPrinted,
     this.onPrintError,
+    this.shareIcon,
     this.onShared,
     this.scrollViewDecoration,
     this.pdfPreviewPageDecoration,
@@ -103,11 +105,17 @@ class PdfPreview extends StatefulWidget {
   /// Widget to display if the PDF document cannot be displayed
   final Widget Function(BuildContext context, Object error)? onError;
 
+  // Custom print icon
+  final Widget? printIcon;
+
   /// Called if the user prints the pdf document
   final void Function(BuildContext context)? onPrinted;
 
   /// Called if an error creating the Pdf occured
   final void Function(BuildContext context, dynamic error)? onPrintError;
+
+  // Custom share icon
+  final Widget? shareIcon;
 
   /// Called if the user shares the pdf document
   final void Function(BuildContext context)? onShared;
@@ -374,7 +382,7 @@ class _PdfPreviewState extends State<PdfPreview> with PdfPreviewRaster {
     if (widget.allowPrinting && info?.canPrint == true) {
       actions.add(
         IconButton(
-          icon: const Icon(Icons.print),
+          icon: widget.printIcon ?? const Icon(Icons.print),
           onPressed: _print,
         ),
       );
@@ -384,7 +392,7 @@ class _PdfPreviewState extends State<PdfPreview> with PdfPreviewRaster {
       actions.add(
         IconButton(
           key: shareWidget,
-          icon: const Icon(Icons.share),
+          icon: widget.shareIcon ?? const Icon(Icons.share),
           onPressed: _share,
         ),
       );

@@ -35,7 +35,7 @@ class PdfPreviewAction {
   });
 
   /// The icon to display
-  final Icon icon;
+  final Widget icon;
 
   /// The callback called when the user tap on the icon
   final OnPdfPreviewActionPressed? onPressed;
