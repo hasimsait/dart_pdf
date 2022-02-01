@@ -511,9 +511,13 @@ class _PdfPreviewState extends State<PdfPreview> with PdfPreviewRaster {
               child: SizedBox(
                 width: double.infinity,
                 child: SafeArea(
-                  child: Wrap(
-                    alignment: WrapAlignment.spaceAround,
-                    children: actions,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: actions,
+                    ),
                   ),
                 ),
               ),
